@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#bffdc4</color>
+    <color name="colorPrimaryDark">#4d1f96</color>
+    <color name="colorAccent">#299332</color>
+    <color name="textColorPrimary">#9630E7</color>
+    <color name="toolbarIconColor">#9630E7</color>
+    <color name="loginPageBackgroundColor">#FFFFFF</color>
+    <color name="colorControlActivated">#299332</color>
+    <color name="meanPageBackgroundColor">#f6edff</color>
+</resources>
