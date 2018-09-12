@@ -12,10 +12,6 @@ import com.android.volley.toolbox.Volley;
 
 import project.android.petapp.PetAppApplication;
 
-
-/**
- * Class that handles image requests using Volley.
- */
 public class ImgRequester {
     private static ImgRequester instance = null;
     private final Context context;
@@ -52,9 +48,6 @@ public class ImgRequester {
                         });
     }
 
-    /**
-     * Get a static instance of ImgRequester
-     */
     public static ImgRequester getInstance() {
         if (instance == null) {
             instance = new ImgRequester();
@@ -62,12 +55,6 @@ public class ImgRequester {
         return instance;
     }
 
-    /**
-     * Sets the image on the given {@link NetworkImageView} to the image at the given URL
-     *
-     * @param networkImageView {@link NetworkImageView} to set image on
-     * @param url              URL of the image
-     */
     public void setImageFromUrl(NetworkImageView networkImageView, String url) {
         networkImageView.setImageUrl(url, imageLoader);
     }

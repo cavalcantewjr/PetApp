@@ -8,20 +8,20 @@ import android.support.v7.app.AppCompatActivity;
 import butterknife.ButterKnife;
 import project.android.petapp.R;
 import project.android.petapp.ui.PetNavigation;
-import project.android.petapp.ui.fragment.LoginFragment;
+import project.android.petapp.ui.fragment.ProductListFragment;
 
-public class MainActivity extends AppCompatActivity implements PetNavigation {
+public class MenuActivity extends AppCompatActivity implements PetNavigation {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pet_activity_main);
+        setContentView(R.layout.activity_menu);
         ButterKnife.bind(this);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.container, new LoginFragment())
+                    .add(R.id.container, new ProductListFragment())
                     .commit();
         }
     }

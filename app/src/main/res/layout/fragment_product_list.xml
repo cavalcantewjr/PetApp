@@ -26,7 +26,7 @@
                 android:layout_height="?attr/actionBarSize"
                 android:paddingLeft="90dp"
                 app:contentInsetStart="0dp"
-                app:title="@string/pet_app_name" />
+                app:title="@string/app_name" />
 
         </android.support.design.widget.AppBarLayout>
         <android.support.design.widget.FloatingActionButton

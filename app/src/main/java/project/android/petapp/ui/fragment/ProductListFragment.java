@@ -54,7 +54,7 @@ public class ProductListFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.pet_productslist_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_product_list, container, false);
 
         ButterKnife.bind(this, view);
         setUpToolbar(view);

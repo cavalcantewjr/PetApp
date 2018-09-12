@@ -1,10 +1,17 @@
 <resources>
-    <string name="pet_app_name">PetApp</string>
-    <string name="pet_hint_username">Usuário</string>
-    <string name="pet_hint_password">Senha</string>
-    <string name="pet_button_next">Entrar</string>
-    <string name="pet_button_cancel">Criar perfil</string>
-    <string name="pet_error_password">A senha deve conter ao menos 8 caracteres.</string>
+    <string name="app_name">PetApp</string>
+
+    <string name="login_hint_username">Usuário</string>
+    <string name="login_hint_password">Senha</string>
+    <string name="login_button_next">Entrar</string>
+    <string name="login_button_cancel">Criar perfil</string>
+    <string name="login_error_password">A senha deve conter ao menos 8 caracteres.</string>
+
+    <string name="cadastro_title">Novo perfil</string>
+    <string name="cadastro_hint_email">E-mail</string>
+    <string name="cadastro_button_cadastrar">Criar perfil</string>
+    <string name="cadastro_button_voltar">Voltar</string>
+
     <string name="pet_filter_title">Filtro</string>
     <string name="pet_search_title">Pesquisa</string>
     <string name="pet_product_title">Título</string>
