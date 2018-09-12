@@ -9,13 +9,13 @@ import com.android.volley.toolbox.NetworkImageView;
 import project.android.petapp.R;
 
 
-public class InterleavedProductslistHolder extends RecyclerView.ViewHolder {
+public class ProductslistHolder extends RecyclerView.ViewHolder {
 
     public NetworkImageView productImage;
     public TextView productTitle;
     public TextView productPrice;
 
-    InterleavedProductslistHolder(@NonNull View itemView) {
+    ProductslistHolder(@NonNull View itemView) {
         super(itemView);
         productImage = itemView.findViewById(R.id.product_image);
         productTitle = itemView.findViewById(R.id.product_title);

@@ -9,7 +9,7 @@
     <string name="pet_search_title">Pesquisa</string>
     <string name="pet_product_title">Título</string>
     <string name="pet_product_description">Texto Secundário</string>
-
+    <string name="pet_hint_search">O que você procura?</string>
     <!-- PetApp menu -->
     <string name="pet_services_label">Serviços</string>
     <string name="pet_puppies_label">Filhotes</string>
@@ -19,5 +19,6 @@
     <string name="pet_medicines_label">Medicamentos</string>
     <string name="pet_contact_label">Contato</string>
     <string name="pet_account_label">Perfil</string>
+
 
 </resources>

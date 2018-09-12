@@ -4,48 +4,44 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/background"
         tools:context=".petappProductsListControllers.ProductslistFragment">
-        <LinearLayout
-            style="@style/Widget.PetApp.Backdrop"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:paddingTop="88dp">
-            <include layout="@layout/pet_backdrop" />
-        </LinearLayout>
+    <LinearLayout
+        style="@style/Widget.PetApp.Backdrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingTop="88dp">
+        <include layout="@layout/pet_backdrop" />
+    </LinearLayout>
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:elevation="0dp">
+            app:elevation="8dp">
             <android.support.v7.widget.Toolbar
                 android:id="@+id/app_bar"
                 style="@style/Widget.PetApp.Toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:paddingLeft="90dp"
+                android:layout_height="70dp"
+                android:paddingLeft="16dp"
                 app:contentInsetStart="0dp"
-                app:title="@string/pet_app_name" />
+                app:title="@string/pet_app_name"
+                app:titleTextColor="@color/toolbarIconColor">
+
+            </android.support.v7.widget.Toolbar>
 
         </android.support.design.widget.AppBarLayout>
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|bottom"
-            android:backgroundTint="@color/meanPageBackgroundColor"
-            android:src="@mipmap/petfootprint_launcher_foreground"
-            android:layout_marginTop="23dp"
-            android:layout_marginLeft="16dp"
-            android:padding="0dp"/>
+
         <android.support.v4.widget.NestedScrollView
             android:id="@+id/product_grid"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
-            android:backgroundTint="@color/meanPageBackgroundColor"
-            android:elevation="8dp">
+            android:layout_marginTop="70dp"
+            android:elevation="6dp"
+            app:contentInsetStart="0dp"
+            android:background="@color/meanPageBackgroundColor">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_view"
