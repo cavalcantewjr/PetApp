@@ -20,7 +20,7 @@ public class ImgRequester {
     private final int byteSizeMax;
 
     private ImgRequester() {
-        context = PetAppApplication.getAppContext();
+        context = PetAppApplication.getContext();
         this.requestQueue = Volley.newRequestQueue(context);
         this.requestQueue.start();
         this.byteSizeMax = calculateMaxByteSize();

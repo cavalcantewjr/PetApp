@@ -10,7 +10,9 @@ import android.view.View;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import project.android.petapp.PetAppApplication;
 import project.android.petapp.R;
+import project.android.petapp.database.entities.Usuario;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -45,6 +47,10 @@ public class LoginActivity extends AppCompatActivity {
         entrarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PetAppApplication.usuario = new Usuario();
+                PetAppApplication.usuario.nome = usuarioEditText.getText().toString();
+                PetAppApplication.usuario.senha = passwordEditText.getText().toString();
+
                 Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);

@@ -4,20 +4,23 @@ import android.app.Application;
 import android.content.Context;
 import android.support.v7.app.AppCompatDelegate;
 
+import project.android.petapp.database.entities.Usuario;
+
 public class PetAppApplication extends Application {
     private static PetAppApplication instance;
-    private static Context appContext;
+    private static Context context;
+    public static Usuario usuario;
 
     public static PetAppApplication getInstance() {
         return instance;
     }
 
-    public static Context getAppContext() {
-        return appContext;
+    public static Context getContext() {
+        return context;
     }
 
-    public void setAppContext(Context mAppContext) {
-        this.appContext = mAppContext;
+    public void setContext(Context context) {
+        this.context = context;
     }
 
     @Override
@@ -25,7 +28,7 @@ public class PetAppApplication extends Application {
         super.onCreate();
         instance = this;
 
-        this.setAppContext(getApplicationContext());
+        this.setContext(getApplicationContext());
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     }
 }
