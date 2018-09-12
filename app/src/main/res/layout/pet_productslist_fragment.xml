@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".petappProductsListControllers.ProductslistFragment">
+        tools:context=".ui.fragment.ProductListFragment">
         <LinearLayout
             style="@style/Widget.PetApp.Backdrop"
             android:layout_width="match_parent"

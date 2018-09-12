@@ -1,4 +1,4 @@
-package project.android.petapp.petappDao;
+package project.android.petapp.database.dao;
 
 import android.content.res.Resources;
 import android.net.Uri;

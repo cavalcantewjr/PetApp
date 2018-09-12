@@ -1,14 +1,14 @@
-package project.android.petapp.petappApplication;
+package project.android.petapp;
 
 import android.app.Application;
 import android.content.Context;
 import android.support.v7.app.AppCompatDelegate;
 
-public class petappApplication extends Application {
-    private static petappApplication instance;
+public class PetAppApplication extends Application {
+    private static PetAppApplication instance;
     private static Context appContext;
 
-    public static petappApplication getInstance() {
+    public static PetAppApplication getInstance() {
         return instance;
     }
 

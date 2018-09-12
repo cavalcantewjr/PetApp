@@ -1,10 +1,12 @@
-package project.android.petapp.petappProductsListControllers;
+package project.android.petapp.ui.fragment;
 
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,11 +18,34 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
-import project.android.petapp.IconClickListener;
+import butterknife.BindDrawable;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import project.android.petapp.R;
-import project.android.petapp.petappDao.ProductDao;
+import project.android.petapp.database.dao.ProductDao;
+import project.android.petapp.ui.adapter.ProductItemDecoration;
+import project.android.petapp.ui.adapter.ProductListAdapter;
+import project.android.petapp.ui.listener.IconClickListener;
 
-public class ProductslistFragment extends Fragment {
+public class ProductListFragment extends Fragment {
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
+
+    @BindView(R.id.fab)
+    FloatingActionButton floatButton;
+
+    @BindView(R.id.product_grid)
+    NestedScrollView productGrid;
+
+    @BindView(R.id.app_bar)
+    Toolbar appBar;
+
+    @BindDrawable(R.mipmap.petfootprint_launcher_foreground)
+    Drawable menuAbrir;
+
+    @BindDrawable(R.drawable.close_menu)
+    Drawable menuFechar;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,16 +53,12 @@ public class ProductslistFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(
-            @NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment with the ProductGrid theme
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.pet_productslist_fragment, container, false);
 
-        // Set up the tool bar
+        ButterKnife.bind(this, view);
         setUpToolbar(view);
 
-        // Set up the RecyclerView
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.HORIZONTAL, false);
         gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
@@ -48,12 +69,11 @@ public class ProductslistFragment extends Fragment {
         });
         recyclerView.setLayoutManager(gridLayoutManager);
 
-        InterleavedProductslistRecyclerViewAdapter adapter = new InterleavedProductslistRecyclerViewAdapter(
-                ProductDao.initProductEntryList(getResources()));
+        ProductListAdapter adapter = new ProductListAdapter(ProductDao.initProductEntryList(getResources()));
         recyclerView.setAdapter(adapter);
         int largePadding = getResources().getDimensionPixelSize(R.dimen.pet_staggered_product_grid_spacing_large);
         int smallPadding = getResources().getDimensionPixelSize(R.dimen.pet_staggered_product_grid_spacing_small);
-        recyclerView.addItemDecoration(new ProductItemsAppearance(largePadding, smallPadding));
+        recyclerView.addItemDecoration(new ProductItemDecoration(largePadding, smallPadding));
         // Set cut corner background for API 23+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             view.findViewById(R.id.product_grid).setBackground(getContext().getDrawable(R.drawable.pet_product_background_shape));
@@ -63,27 +83,28 @@ public class ProductslistFragment extends Fragment {
 
     private void setUpToolbar(View view) {
         Toolbar toolbar = view.findViewById(R.id.app_bar);
-        FloatingActionButton floatbutton = view.findViewById(R.id.fab);
+
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         if (activity != null) {
             activity.setSupportActionBar(toolbar);
         }
 
-        floatbutton.setOnClickListener(new IconClickListener(
-                getContext(),
-                view.findViewById(R.id.product_grid),
-                view.findViewById(R.id.fab),
-                view.findViewById(R.id.app_bar),
-                new AccelerateDecelerateInterpolator(),
-                getContext().getResources().getDrawable(R.mipmap.petfootprint_launcher_foreground), // Menu abrir
-                getContext().getResources().getDrawable(R.drawable.close_menu))); // Menu fechar
+        floatButton.setOnClickListener(
+                new IconClickListener(
+                        getContext(),
+                        productGrid,
+                        floatButton,
+                        appBar,
+                        new AccelerateDecelerateInterpolator(),
+                        menuAbrir, // Menu abrir
+                        menuFechar
+                )
+        ); // Menu fechar
     }
-
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
         menuInflater.inflate(R.menu.pet_toolbar_menu, menu);
         super.onCreateOptionsMenu(menu, menuInflater);
     }
-
 }

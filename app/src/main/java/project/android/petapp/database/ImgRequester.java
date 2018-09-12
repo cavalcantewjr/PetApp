@@ -1,4 +1,4 @@
-package project.android.petapp.petappDao;
+package project.android.petapp.database;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,7 +10,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.Volley;
 
-import project.android.petapp.petappApplication.petappApplication;
+import project.android.petapp.PetAppApplication;
 
 
 /**
@@ -24,7 +24,7 @@ public class ImgRequester {
     private final int byteSizeMax;
 
     private ImgRequester() {
-        context = petappApplication.getAppContext();
+        context = PetAppApplication.getAppContext();
         this.requestQueue = Volley.newRequestQueue(context);
         this.requestQueue.start();
         this.byteSizeMax = calculateMaxByteSize();

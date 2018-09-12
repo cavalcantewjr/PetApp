@@ -1,4 +1,4 @@
-package project.android.petapp;
+package project.android.petapp.ui.listener;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -10,7 +10,8 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.Interpolator;
 import android.widget.ImageView;
-import android.support.v7.widget.Toolbar;
+
+import project.android.petapp.R;
 
 public class IconClickListener implements View.OnClickListener {
 
@@ -26,8 +27,7 @@ public class IconClickListener implements View.OnClickListener {
 
     private final AnimatorSet animatorSet = new AnimatorSet();
 
-    public IconClickListener(
-            Context context, View sheet,View floatb,View toobar, @Nullable Interpolator interpolator,
+    public IconClickListener(Context context, View sheet, View floatb, View toobar, @Nullable Interpolator interpolator,
             @Nullable Drawable openIcon, @Nullable Drawable closeIcon) {
         this.context = context;
         this.viewSheet = sheet;
@@ -74,10 +74,10 @@ public class IconClickListener implements View.OnClickListener {
             }
             if (backShown) {
                 ((ImageView) view).setImageDrawable(close);
-                toobar.setPadding(56,12,12,12);
+                toobar.setPadding(56, 12, 12, 12);
             } else {
                 ((ImageView) view).setImageDrawable(open);
-                toobar.setPadding(300,12,12,12);
+                toobar.setPadding(300, 12, 12, 12);
 
             }
         }
