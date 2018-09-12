@@ -34,14 +34,18 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if(PetAppApplication.usuario != null){
+            navegarParaMenu();
+        }
+
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
         cadastrarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, CadastroActivity.class);
-                startActivity(intent);
+                navegarParaCadastro();
             }
         });
         entrarButton.setOnClickListener(new View.OnClickListener() {
@@ -51,11 +55,20 @@ public class LoginActivity extends AppCompatActivity {
                 PetAppApplication.usuario.nome = usuarioEditText.getText().toString();
                 PetAppApplication.usuario.senha = passwordEditText.getText().toString();
 
-                Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                finish();
+                navegarParaMenu();
             }
         });
+    }
+
+    private void navegarParaCadastro(){
+        Intent intent = new Intent(this, CadastroActivity.class);
+        startActivity(intent);
+    }
+
+    private void navegarParaMenu(){
+        Intent intent = new Intent(this, MenuActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 }

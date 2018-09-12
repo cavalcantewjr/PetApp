@@ -42,13 +42,14 @@ public class CadastroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
         ButterKnife.bind(this);
 
+        if(PetAppApplication.usuario != null){
+            navegarParaMenu();
+        }
+
         voltarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CadastroActivity.this, LoginActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                finish();
+                navegarParaLogin();
             }
         });
         cadastrarButton.setOnClickListener(new View.OnClickListener() {
@@ -59,11 +60,22 @@ public class CadastroActivity extends AppCompatActivity {
                 PetAppApplication.usuario.email = emailEditText.getText().toString();
                 PetAppApplication.usuario.senha = passwordEditText.getText().toString();
 
-                Intent intent = new Intent(CadastroActivity.this, MenuActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                finish();
+                navegarParaMenu();
             }
         });
+    }
+
+    private void navegarParaLogin(){
+        Intent intent = new Intent(CadastroActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    private void navegarParaMenu(){
+        Intent intent = new Intent(this, MenuActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 }
