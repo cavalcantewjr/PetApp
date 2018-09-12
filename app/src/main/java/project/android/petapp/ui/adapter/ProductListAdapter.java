@@ -25,25 +25,16 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         imgRequester = ImgRequester.getInstance();
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        return position % 3;
-    }
-
+    @NonNull
     @Override
     public ProductListHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        int layoutId = R.layout.pet_product_card_first;
-        if (viewType == 1) {
-            layoutId = R.layout.pet_product_card_second;
-        } else if (viewType == 2) {
-            layoutId = R.layout.pet_product_card_third;
-        }
-
+        int layoutId = R.layout.pet_product_card;
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
         return new ProductListHolder(layoutView);
     }
+
     @Override
-    public void onBindViewHolder(ProductListHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProductListHolder holder, int position) {
         if (productList != null && position < productList.size()) {
             ProductDao product = productList.get(position);
             holder.productTitle.setText(product.title);
@@ -59,9 +50,9 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     class ProductListHolder extends RecyclerView.ViewHolder {
 
-        private NetworkImageView productImage;
-        private TextView productTitle;
-        private TextView productPrice;
+        public NetworkImageView productImage;
+        public TextView productTitle;
+        public TextView productPrice;
 
         ProductListHolder(@NonNull View itemView) {
             super(itemView);

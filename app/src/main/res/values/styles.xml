@@ -14,13 +14,19 @@
         <item name="hintTextAppearance">@style/TextAppearance.PetApp.TextInputLayout.HintText</item>
         <item name="android:paddingBottom">8dp</item>
     </style>
+    <style name="Widget.PetApp.TextInputLayout.search" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="hintTextAppearance">@style/TextAppearance.PetApp.TextInputLayout.HintText</item>
+        <item name="boxStrokeColor">@color/colorPrimary</item>
+        <item name="boxBackgroundColor">@color/colorPrimaryLight</item>
+        <item name="android:textColor">#fff</item>
+    </style>
 
     <style name="TextAppearance.PetApp.TextInputLayout.HintText" parent="TextAppearance.MaterialComponents.Subtitle2">
         <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
 
     <style name="Widget.PetApp.Button" parent="Widget.MaterialComponents.Button">
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textColor">@color/toolbarIconColor</item>
         <item name="backgroundTint">@color/colorPrimary</item>
     </style>
 
@@ -33,16 +39,12 @@
         <item name="android:theme">@style/Theme.PetApp</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="android:textSize">16sp</item>
-    </style>
-
-    <style name="TextAppearance.PetApp.Toolbar" parent="TextAppearance.MaterialComponents.Button">
-        <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/toolbarIconColor</item>
     </style>
 
-    <style name="TextAppearance.PetApp.Title" parent="TextAppearance.MaterialComponents.Headline4">
+    <style name="TextAppearance.PetApp.Title" parent="TextAppearance.MaterialComponents.Headline2">
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/toolbarIconColor</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
     </style>
 
     <style name="Widget.PetApp.Backdrop" parent="">
