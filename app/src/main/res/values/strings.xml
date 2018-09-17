@@ -13,7 +13,7 @@
     <string name="cadastro_button_voltar">Voltar</string>
 
     <string name="pet_filter_title">Filtro</string>
-    <string name="pet_search_title">Pesquisa</string>
+    <string name="nav_item_search">Pesquisa</string>
     <string name="pet_product_title">Título</string>
     <string name="pet_product_description">Texto Secundário</string>
     <string name="pet_hint_search">O que você procura?</string>

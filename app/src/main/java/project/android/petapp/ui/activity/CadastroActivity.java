@@ -73,7 +73,7 @@ public class CadastroActivity extends AppCompatActivity {
     }
 
     private void navegarParaMenu(){
-        Intent intent = new Intent(this, MenuActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();

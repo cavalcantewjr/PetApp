@@ -1,11 +1,10 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <style name="Theme.PetApp" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorPrimaryDark</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <item name="colorControlActivated">@color/colorControlActivated</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
     </style>
@@ -13,16 +12,6 @@
     <style name="Widget.PetApp.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="hintTextAppearance">@style/TextAppearance.PetApp.TextInputLayout.HintText</item>
         <item name="android:paddingBottom">8dp</item>
-    </style>
-    <style name="Widget.PetApp.TextInputLayout.search" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
-        <item name="hintTextAppearance">@style/TextAppearance.PetApp.TextInputLayout.HintText</item>
-        <item name="boxStrokeColor">@color/colorPrimary</item>
-        <item name="boxBackgroundColor">@color/colorPrimaryLight</item>
-        <item name="android:textColor">#fff</item>
-    </style>
-
-    <style name="TextAppearance.PetApp.TextInputLayout.HintText" parent="TextAppearance.MaterialComponents.Subtitle2">
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
 
     <style name="Widget.PetApp.Button" parent="Widget.MaterialComponents.Button">
@@ -34,18 +23,29 @@
         <item name="android:textColor">@color/colorPrimaryDark</item>
     </style>
 
-    <style name="Widget.PetApp.Toolbar" parent="Widget.AppCompat.Toolbar">
-        <item name="android:background">@color/colorPrimary</item>
-        <item name="android:theme">@style/Theme.PetApp</item>
-        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/toolbarIconColor</item>
-    </style>
-
     <style name="TextAppearance.PetApp.Title" parent="TextAppearance.MaterialComponents.Headline2">
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/textColorPrimary</item>
     </style>
+
+    <style name="TextAppearance.PetApp.TextInputLayout.HintText" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <!--<style name="Widget.PetApp.TextInputLayout.search" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">-->
+    <!--<item name="hintTextAppearance">@style/TextAppearance.PetApp.TextInputLayout.HintText</item>-->
+    <!--<item name="boxStrokeColor">@color/colorPrimary</item>-->
+    <!--<item name="boxBackgroundColor">@color/colorPrimaryLight</item>-->
+    <!--<item name="android:textColor">#fff</item>-->
+    <!--</style>-->
+
+    <!--<style name="Widget.PetApp.Toolbar" parent="Widget.AppCompat.Toolbar">-->
+        <!--<item name="android:background">@color/colorPrimary</item>-->
+        <!--<item name="android:theme">@style/Theme.PetApp</item>-->
+        <!--<item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>-->
+        <!--<item name="android:textSize">16sp</item>-->
+        <!--<item name="android:textColor">@color/toolbarIconColor</item>-->
+    <!--</style>-->
 
     <style name="Widget.PetApp.Backdrop" parent="">
         <item name="android:background">@color/colorPrimary</item>

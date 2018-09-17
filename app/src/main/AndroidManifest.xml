@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ui.activity.MainActivity" />
         <activity android:name=".ui.activity.MenuActivity" />
         <activity android:name=".ui.activity.CadastroActivity" />
 

@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import butterknife.ButterKnife;
 import project.android.petapp.R;
 import project.android.petapp.ui.PetNavigation;
-import project.android.petapp.ui.fragment.ProductListFragment;
+import project.android.petapp.ui.fragment.ProdutoFragment;
 
 public class MenuActivity extends AppCompatActivity implements PetNavigation {
 
@@ -21,7 +21,7 @@ public class MenuActivity extends AppCompatActivity implements PetNavigation {
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.container, new ProductListFragment())
+                    .add(R.id.container, new ProdutoFragment())
                     .commit();
         }
     }

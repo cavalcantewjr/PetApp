@@ -3,21 +3,26 @@ package project.android.petapp.ui.fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import project.android.petapp.R;
 import project.android.petapp.database.dao.ProductDao;
 import project.android.petapp.ui.adapter.ProductListAdapter;
 
-public class ProductListFragment extends Fragment {
+public class ProdutoFragment extends Fragment {
+
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
+
+//    @BindView(R.id.app_bar)
+//    Toolbar toolbar;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,11 +31,12 @@ public class ProductListFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_product_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_produto, container, false);
+//        View view = inflater.inflate(R.layout.fragment_produto, null);
+        ButterKnife.bind(this, view);
 
-        setUpToolbar(view);
+//        setUpToolbar(view);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -39,17 +45,16 @@ public class ProductListFragment extends Fragment {
         return view;
     }
 
-    private void setUpToolbar(View view) {
-        Toolbar toolbar = view.findViewById(R.id.app_bar);
-        AppCompatActivity activity = (AppCompatActivity) getActivity();
-        if (activity != null) {
-            activity.setSupportActionBar(toolbar);
-        }
-    }
+//    private void setUpToolbar(View view) {
+//        AppCompatActivity activity = (AppCompatActivity) getActivity();
+//        if (activity != null) {
+//            activity.setSupportActionBar(toolbar);
+//        }
+//    }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
-        menuInflater.inflate(R.menu.pet_toolbar_menu, menu);
-        super.onCreateOptionsMenu(menu, menuInflater);
-    }
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
+//        menuInflater.inflate(R.menu.toolbar_menu, menu);
+//        super.onCreateOptionsMenu(menu, menuInflater);
+//    }
 }
