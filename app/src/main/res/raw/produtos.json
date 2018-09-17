@@ -1,0 +1,32 @@
+[
+  {
+    "titulo": "Filhote de Dog",
+    "url": "https://d17fnq9dkz9hgj.cloudfront.net/uploads/2013/05/120251710-632x3531-253x253.jpg",
+    "preco": "R$300"
+  },
+  {
+    "titulo": "Coleira de couro",
+    "url": "https://www.petelegante.com.br/media/catalog/product/cache/1/thumbnail/9df78eab33525d08d6e5fb8d27136e95/c/o/coleira_para_caes_em_courino_confortavel_preto_com_pingente_osso_de_aco_inox_gravacao_nome_e_telefone.jpg",
+    "preco": "R$60"
+  },
+  {
+    "titulo": "Kit Rosa ",
+    "url": "https://www.petelegante.com.br/media/catalog/product/cache/1/thumbnail/9df78eab33525d08d6e5fb8d27136e95/k/i/kit_rosa_bolinhas.jpg",
+    "preco": "R$120"
+  },
+  {
+    "titulo": "Filhote de Dog",
+    "url": "https://d17fnq9dkz9hgj.cloudfront.net/uploads/2013/05/120251710-632x3531-253x253.jpg",
+    "preco": "R$300"
+  },
+  {
+    "titulo": "Coleira de couro",
+    "url": "https://www.petelegante.com.br/media/catalog/product/cache/1/thumbnail/9df78eab33525d08d6e5fb8d27136e95/c/o/coleira_para_caes_em_courino_confortavel_preto_com_pingente_osso_de_aco_inox_gravacao_nome_e_telefone.jpg",
+    "preco": "R$60"
+  },
+  {
+    "titulo": "Kit Rosa ",
+    "url": "https://www.petelegante.com.br/media/catalog/product/cache/1/thumbnail/9df78eab33525d08d6e5fb8d27136e95/k/i/kit_rosa_bolinhas.jpg",
+    "preco": "R$120"
+  }
+]

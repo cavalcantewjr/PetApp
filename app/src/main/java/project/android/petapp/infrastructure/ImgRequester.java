@@ -1,4 +1,4 @@
-package project.android.petapp.database;
+package project.android.petapp.infrastructure;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -15,15 +15,13 @@ import project.android.petapp.PetAppApplication;
 public class ImgRequester {
     private static ImgRequester instance = null;
     private final Context context;
-    private final RequestQueue requestQueue;
     private final ImageLoader imageLoader;
-    private final int byteSizeMax;
 
     private ImgRequester() {
         context = PetAppApplication.getContext();
-        this.requestQueue = Volley.newRequestQueue(context);
-        this.requestQueue.start();
-        this.byteSizeMax = calculateMaxByteSize();
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.start();
+        final int byteSizeMax = calculateMaxByteSize();
         this.imageLoader =
                 new ImageLoader(
                         requestQueue,

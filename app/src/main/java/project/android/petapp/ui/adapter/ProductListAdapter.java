@@ -12,16 +12,16 @@ import com.android.volley.toolbox.NetworkImageView;
 import java.util.List;
 
 import project.android.petapp.R;
-import project.android.petapp.database.ImgRequester;
-import project.android.petapp.database.dao.ProductDao;
+import project.android.petapp.database.entities.Produto;
+import project.android.petapp.infrastructure.ImgRequester;
 
 public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ProductListHolder> {
 
-    private List<ProductDao> productList;
+    private List<Produto> produtoList;
     private ImgRequester imgRequester;
 
-    public ProductListAdapter(List<ProductDao> productList) {
-        this.productList = productList;
+    public ProductListAdapter(List<Produto> produtoList) {
+        this.produtoList = produtoList;
         imgRequester = ImgRequester.getInstance();
     }
 
@@ -35,24 +35,24 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ProductListHolder holder, int position) {
-        if (productList != null && position < productList.size()) {
-            ProductDao product = productList.get(position);
-            holder.productTitle.setText(product.title);
-            holder.productPrice.setText(product.price);
-            imgRequester.setImageFromUrl(holder.productImage, product.url);
+        if (produtoList != null && position < produtoList.size()) {
+            Produto produto = produtoList.get(position);
+            holder.productTitle.setText(produto.titulo);
+            holder.productPrice.setText(produto.preco);
+            imgRequester.setImageFromUrl(holder.productImage, produto.url);
         }
     }
 
     @Override
     public int getItemCount() {
-        return productList.size();
+        return produtoList.size();
     }
 
     class ProductListHolder extends RecyclerView.ViewHolder {
 
-        public NetworkImageView productImage;
-        public TextView productTitle;
-        public TextView productPrice;
+        NetworkImageView productImage;
+        TextView productTitle;
+        TextView productPrice;
 
         ProductListHolder(@NonNull View itemView) {
             super(itemView);

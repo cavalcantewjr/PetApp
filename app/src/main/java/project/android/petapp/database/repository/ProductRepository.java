@@ -1,7 +1,6 @@
-package project.android.petapp.database.dao;
+package project.android.petapp.database.repository;
 
 import android.content.res.Resources;
-import android.net.Uri;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -19,30 +18,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import project.android.petapp.R;
+import project.android.petapp.database.entities.Produto;
 
-public class ProductDao {
-    private static final String TAG = ProductDao.class.getSimpleName();
+public class ProductRepository {
+    private static final String TAG = ProductRepository.class.getSimpleName();
 
-    public final String title;
-    public final Uri dynamicUrl;
-    public final String url;
-    public final String price;
-    public final String description;
+    public static List<Produto> getAll(Resources resources) {
 
-    public ProductDao(
-            String title, String dynamicUrl, String url, String price, String description) {
-        this.title = title;
-        this.dynamicUrl = Uri.parse(dynamicUrl);
-        this.url = url;
-        this.price = price;
-        this.description = description;
+        String jsonProductsString = readRawJson(resources);
+        Gson gson = new Gson();
+        Type productListType = new TypeToken<ArrayList<Produto>>() {}.getType();
+        return gson.fromJson(jsonProductsString, productListType);
     }
 
-    /**
-     * Loads a raw JSON at R.raw.products and converts it into a list of ProductEntry objects
-     */
-    public static List<ProductDao> initProductEntryList(Resources resources) {
-        InputStream inputStream = resources.openRawResource(R.raw.products);
+    private static String readRawJson(Resources resources) {
+        InputStream inputStream = resources.openRawResource(R.raw.produtos);
         Writer writer = new StringWriter();
         char[] buffer = new char[1024];
         try {
@@ -60,10 +50,6 @@ public class ProductDao {
                 Log.e(TAG, "Error closing the input stream.", exception);
             }
         }
-        String jsonProductsString = writer.toString();
-        Gson gson = new Gson();
-        Type productListType = new TypeToken<ArrayList<ProductDao>>() {
-        }.getType();
-        return gson.fromJson(jsonProductsString, productListType);
+        return writer.toString();
     }
 }

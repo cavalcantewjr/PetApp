@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import project.android.petapp.R;
-import project.android.petapp.database.dao.ProductDao;
+import project.android.petapp.database.repository.ProductRepository;
 import project.android.petapp.ui.adapter.ProductListAdapter;
 
 public class ProdutoFragment extends Fragment {
@@ -40,7 +40,7 @@ public class ProdutoFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        ProductListAdapter adapter = new ProductListAdapter(ProductDao.initProductEntryList(getResources()));
+        ProductListAdapter adapter = new ProductListAdapter(ProductRepository.getAll(getResources()));
         recyclerView.setAdapter(adapter);
         return view;
     }
