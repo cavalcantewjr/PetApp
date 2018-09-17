@@ -8,4 +8,4 @@
     android:fitsSystemWindows="true"
     android:minHeight="?attr/actionBarSize"
     app:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
-    app:title="@string/app_name"/>
+    app:title="@string/app_name" />

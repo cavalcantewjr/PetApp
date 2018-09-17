@@ -35,9 +35,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        if(PetAppApplication.usuario != null){
+        if(PetAppApplication.usuario != null){
             navegarParaMenu();
-//        }
+        }
 
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void navegarParaMenu(){
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, MenuActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();

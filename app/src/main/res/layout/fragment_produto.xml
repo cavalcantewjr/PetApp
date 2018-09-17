@@ -7,36 +7,6 @@
     android:background="@drawable/background"
     tools:context=".ui.fragment.ProdutoFragment">
 
-    <!--<LinearLayout-->
-        <!--style="@style/Widget.PetApp.Backdrop"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:gravity="center_horizontal"-->
-        <!--android:orientation="vertical"-->
-        <!--android:paddingTop="88dp">-->
-
-        <!--<include layout="@layout/pet_backdrop" />-->
-    <!--</LinearLayout>-->
-
-    <!--<android.support.design.widget.AppBarLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:elevation="8dp">-->
-
-        <!--<android.support.v7.widget.Toolbar-->
-            <!--android:id="@+id/app_bar"-->
-            <!--style="@style/Widget.PetApp.Toolbar"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="70dp"-->
-            <!--android:paddingLeft="16dp"-->
-            <!--app:contentInsetStart="0dp"-->
-            <!--app:title="@string/app_name"-->
-            <!--app:titleTextColor="@color/toolbarIconColor">-->
-
-        <!--</android.support.v7.widget.Toolbar>-->
-
-    <!--</android.support.design.widget.AppBarLayout>-->
-
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/product_grid"
         android:layout_width="match_parent"

@@ -12,20 +12,14 @@
     <string name="cadastro_button_cadastrar">Criar perfil</string>
     <string name="cadastro_button_voltar">Voltar</string>
 
-    <string name="pet_filter_title">Filtro</string>
-    <string name="nav_item_search">Pesquisa</string>
-    <string name="pet_product_title">Título</string>
-    <string name="pet_product_description">Texto Secundário</string>
-    <string name="pet_hint_search">O que você procura?</string>
-    <!-- PetApp menu -->
-    <string name="pet_services_label">Serviços</string>
-    <string name="pet_puppies_label">Filhotes</string>
-    <string name="pet_products_label">Produtos</string>
-    <string name="pet_adoption_label">Adote um Pet</string>
-    <string name="pet_foods_label">Alimentos</string>
-    <string name="pet_medicines_label">Medicamentos</string>
-    <string name="pet_contact_label">Contato</string>
-    <string name="pet_account_label">Perfil</string>
+    <string name="card_produto_titulo">Título</string>
+    <string name="card_produto_descricao">Texto Secundário</string>
 
+    <string name="drawer_label_inicio">Início</string>
+    <string name="drawer_label_quem_somos">Quem somos</string>
+    <string name="drawer_label_configuracoes">Configurações</string>
+    <string name="drawer_label_contato">Contato</string>
+    <string name="drawer_label_perfil">Perfil</string>
+    <string name="drawer_label_avaliar">Avaliar</string>
 
 </resources>

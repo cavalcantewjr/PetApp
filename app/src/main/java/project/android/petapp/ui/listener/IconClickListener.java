@@ -57,7 +57,7 @@ public class IconClickListener implements View.OnClickListener {
     }
 
     private void sheetsAnimator(View view) {
-        final int translateY = height - context.getResources().getDimensionPixelSize(R.dimen.pet_product_grid_reveal_height);
+        final int translateY = height - context.getResources().getDimensionPixelSize(R.dimen.product_grid_reveal_height);
         ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationY", backShown ? translateY : 0);
         animator.setDuration(500);
         if (interpolator != null) {

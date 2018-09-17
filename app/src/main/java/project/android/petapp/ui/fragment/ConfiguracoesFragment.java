@@ -10,11 +10,11 @@ import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import project.android.petapp.R;
 
-public class ServicoFragment extends Fragment {
+public class ConfiguracoesFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_servico, container, false);
+        View view = inflater.inflate(R.layout.fragment_configuracoes, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
