@@ -4,5 +4,5 @@ public class Servico {
     public int id;
     public String titulo;
     public String url;
-    public int preco;
+    public String preco;
 }

@@ -12,16 +12,13 @@ import android.view.ViewGroup;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import project.android.petapp.R;
-import project.android.petapp.database.repository.ProductRepository;
-import project.android.petapp.ui.adapter.ProductListAdapter;
+import project.android.petapp.database.repository.ProdutoRepository;
+import project.android.petapp.ui.adapter.ProdutoListAdapter;
 
 public class ProdutoFragment extends Fragment {
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
-
-//    @BindView(R.id.app_bar)
-//    Toolbar toolbar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,29 +29,13 @@ public class ProdutoFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_produto, container, false);
-//        View view = inflater.inflate(R.layout.fragment_produto, null);
         ButterKnife.bind(this, view);
-
-//        setUpToolbar(view);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        ProductListAdapter adapter = new ProductListAdapter(ProductRepository.getAll(getResources()));
+        ProdutoListAdapter adapter = new ProdutoListAdapter(ProdutoRepository.getAll(getResources()));
         recyclerView.setAdapter(adapter);
         return view;
     }
-
-//    private void setUpToolbar(View view) {
-//        AppCompatActivity activity = (AppCompatActivity) getActivity();
-//        if (activity != null) {
-//            activity.setSupportActionBar(toolbar);
-//        }
-//    }
-
-//    @Override
-//    public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
-//        menuInflater.inflate(R.menu.toolbar_menu, menu);
-//        super.onCreateOptionsMenu(menu, menuInflater);
-//    }
 }

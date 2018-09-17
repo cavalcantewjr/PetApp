@@ -18,21 +18,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import project.android.petapp.R;
-import project.android.petapp.database.entities.Produto;
+import project.android.petapp.database.entities.Servico;
 
-public class ProductRepository {
-    private static final String TAG = ProductRepository.class.getSimpleName();
+public class ServicoRepository {
+    private static final String TAG = ServicoRepository.class.getSimpleName();
 
-    public static List<Produto> getAll(Resources resources) {
+    public static List<Servico> getAll(Resources resources) {
 
-        String jsonProductsString = readRawJson(resources);
+        String json = readRawJson(resources);
         Gson gson = new Gson();
-        Type productListType = new TypeToken<ArrayList<Produto>>() {}.getType();
-        return gson.fromJson(jsonProductsString, productListType);
+        Type productListType = new TypeToken<ArrayList<Servico>>() {}.getType();
+        return gson.fromJson(json, productListType);
     }
 
     private static String readRawJson(Resources resources) {
-        InputStream inputStream = resources.openRawResource(R.raw.produtos);
+        InputStream inputStream = resources.openRawResource(R.raw.servicos);
         Writer writer = new StringWriter();
         char[] buffer = new char[1024];
         try {

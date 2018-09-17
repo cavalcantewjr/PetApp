@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -34,18 +32,16 @@ public class MenuActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     public Toolbar toolbar;
 
-    private FragmentManager fragmentManager;
-    private FragmentTransaction fragmentTransaction;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        fragmentManager = getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.containerView, new TabFragment()).commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.containerView, new TabFragment())
+                .commit();
 
         navigationView.setCheckedItem(R.id.nav_item_home);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -54,8 +50,10 @@ public class MenuActivity extends AppCompatActivity {
                 Fragment selectedFragment = selectDrawerItem(menuItem);
 
                 if (menuItem.getItemId() != R.id.nav_item_avaliar) {
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.containerView, selectedFragment).commit();
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.containerView, selectedFragment)
+                            .commit();
 
                     if (menuItem.getItemId() != R.id.nav_item_avaliar) getSupportActionBar().setTitle(menuItem.getTitle());
                     navigationView.setCheckedItem(menuItem.getItemId());
