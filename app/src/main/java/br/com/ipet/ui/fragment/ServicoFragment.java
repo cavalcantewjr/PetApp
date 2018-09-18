@@ -9,7 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.ipet.R;
+import br.com.ipet.database.entities.Servico;
 import br.com.ipet.database.repository.ServicoRepository;
 import br.com.ipet.ui.adapter.ServicoListAdapter;
 import butterknife.BindView;
@@ -19,6 +23,8 @@ public class ServicoFragment extends Fragment {
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
+
+    ServicoRepository produtoRepository = new ServicoRepository();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,8 +40,11 @@ public class ServicoFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        ServicoListAdapter adapter = new ServicoListAdapter(ServicoRepository.getAll(getResources()));
+        List<Servico> servicoList = new ArrayList<>();
+        ServicoListAdapter adapter = new ServicoListAdapter(servicoList);
         recyclerView.setAdapter(adapter);
+
+        produtoRepository.getAll(getResources(), adapter, servicoList);
         return view;
     }
 }

@@ -1,55 +1,65 @@
 package br.com.ipet.database.repository;
 
 import android.content.res.Resources;
-import android.util.Log;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
-import br.com.ipet.R;
 import br.com.ipet.database.entities.Produto;
+import timber.log.Timber;
 
 public class ProdutoRepository {
-    private static final String TAG = ProdutoRepository.class.getSimpleName();
 
-    public static List<Produto> getAll(Resources resources) {
+    FirebaseFirestore database = FirebaseFirestore.getInstance();
 
-        String json = readRawJson(resources);
-        Gson gson = new Gson();
-        Type productListType = new TypeToken<ArrayList<Produto>>() {}.getType();
-        return gson.fromJson(json, productListType);
+    public void getAll(Resources resources, final RecyclerView.Adapter adapter, final List<Produto> produtoList) {
+        database.collection("produtos")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (DocumentSnapshot snapshot : task.getResult()) {
+                                produtoList.add(snapshot.toObject(Produto.class));
+                            }
+
+                            adapter.notifyDataSetChanged();
+                        } else {
+                            Timber.e(task.getException(), "Erro ao tentar obter produtos do servidor.");
+                        }
+                    }
+                });
     }
 
-    private static String readRawJson(Resources resources) {
-        InputStream inputStream = resources.openRawResource(R.raw.produtos);
-        Writer writer = new StringWriter();
-        char[] buffer = new char[1024];
-        try {
-            Reader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
-            int pointer;
-            while ((pointer = reader.read(buffer)) != -1) {
-                writer.write(buffer, 0, pointer);
-            }
-        } catch (IOException exception) {
-            Log.e(TAG, "Error writing/reading from the JSON file.", exception);
-        } finally {
-            try {
-                inputStream.close();
-            } catch (IOException exception) {
-                Log.e(TAG, "Error closing the input stream.", exception);
-            }
-        }
-        return writer.toString();
-    }
+//    private void addUser(String userId, String name, String email) {
+//        // Create a new user with a first, middle, and last name
+//        Map<String, Object> user = new HashMap<>();
+//        user.put("first", "Alan");
+//        user.put("middle", "Mathison");
+//        user.put("last", "Turing");
+//        user.put("born", 1912);
+//
+//        // Add a new document with a generated ID
+//        database.collection("users")
+//                .add(user)
+//                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//                    @Override
+//                    public void onSuccess(DocumentReference documentReference) {
+//                        Timber.d("DocumentSnapshot added with ID: %s", documentReference.getId());
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Timber.e(e, "Error adding document");
+//                    }
+//                });
+//    }
 }

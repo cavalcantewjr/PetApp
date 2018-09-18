@@ -9,7 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.ipet.R;
+import br.com.ipet.database.entities.Produto;
 import br.com.ipet.database.repository.ProdutoRepository;
 import br.com.ipet.ui.adapter.ProdutoListAdapter;
 import butterknife.BindView;
@@ -19,6 +23,8 @@ public class ProdutoFragment extends Fragment {
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
+
+    ProdutoRepository produtoRepository = new ProdutoRepository();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,8 +40,11 @@ public class ProdutoFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        ProdutoListAdapter adapter = new ProdutoListAdapter(ProdutoRepository.getAll(getResources()));
+        List<Produto> produtoList = new ArrayList<>();
+        ProdutoListAdapter adapter = new ProdutoListAdapter(produtoList);
         recyclerView.setAdapter(adapter);
+
+        produtoRepository.getAll(getResources(), adapter, produtoList);
         return view;
     }
 }

@@ -1,4 +1,4 @@
-package project.android.petapp.infrastructure;
+package br.com.ipet.infrastructure.requesters;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,7 +10,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.Volley;
 
-import project.android.petapp.PetAppApplication;
+import br.com.ipet.PetAppApplication;
 
 public class ImgRequester {
     private static ImgRequester instance = null;

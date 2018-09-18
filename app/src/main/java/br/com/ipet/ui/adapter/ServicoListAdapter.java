@@ -13,7 +13,7 @@ import java.util.List;
 
 import br.com.ipet.R;
 import br.com.ipet.database.entities.Servico;
-import br.com.ipet.infrastructure.ImgRequester;
+import br.com.ipet.infrastructure.requesters.ImgRequester;
 
 public class ServicoListAdapter extends RecyclerView.Adapter<ServicoListAdapter.ServicoListHolder> {
 
@@ -38,7 +38,7 @@ public class ServicoListAdapter extends RecyclerView.Adapter<ServicoListAdapter.
         if (servicoList != null && position < servicoList.size()) {
             Servico servico = servicoList.get(position);
             holder.servicoTitulo.setText(servico.titulo);
-            holder.servicoPreco.setText(servico.preco);
+            holder.servicoPreco.setText("R$" + servico.preco);
             imgRequester.setImageFromUrl(holder.servicoImagem, servico.url);
         }
     }

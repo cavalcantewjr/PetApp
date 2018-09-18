@@ -13,7 +13,7 @@ import java.util.List;
 
 import br.com.ipet.R;
 import br.com.ipet.database.entities.Produto;
-import br.com.ipet.infrastructure.ImgRequester;
+import br.com.ipet.infrastructure.requesters.ImgRequester;
 
 public class ProdutoListAdapter extends RecyclerView.Adapter<ProdutoListAdapter.ProdutoListHolder> {
 
@@ -38,7 +38,7 @@ public class ProdutoListAdapter extends RecyclerView.Adapter<ProdutoListAdapter.
         if (produtoList != null && position < produtoList.size()) {
             Produto produto = produtoList.get(position);
             holder.productTitle.setText(produto.titulo);
-            holder.productPrice.setText(produto.preco);
+            holder.productPrice.setText("R$" + produto.preco);
             imgRequester.setImageFromUrl(holder.productImage, produto.url);
         }
     }
