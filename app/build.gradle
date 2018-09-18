@@ -2,7 +2,9 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
+    buildToolsVersion "28.0.0"
     defaultConfig {
+        applicationId "br.com.ipet"
         minSdkVersion 22
         targetSdkVersion 28
         versionCode 1
@@ -14,6 +16,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationIdSuffix ".release"
+        }
+        debug {
+            applicationIdSuffix ".debug"
         }
     }
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PetApp</string>
+    <string name="app_name">IPet</string>
 
     <string name="login_hint_username">Usuário</string>
     <string name="login_hint_password">Senha</string>
