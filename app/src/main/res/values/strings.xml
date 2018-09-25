@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">IPet</string>
 
+    <string name="facebook_app_id">332830167473125</string>
+    <string name="fb_login_protocol_scheme">fb332830167473125</string>
+
     <string name="login_hint_username">Usuário</string>
     <string name="login_hint_password">Senha</string>
     <string name="login_button_next">Entrar</string>

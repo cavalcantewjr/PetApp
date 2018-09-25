@@ -66,6 +66,13 @@
                 android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
 
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/button_facebook_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"  />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -76,7 +83,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:text="@string/login_button_next" />
 
             <android.support.design.button.MaterialButton
@@ -85,8 +91,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"
-                android:layout_marginRight="12dp"
-                android:layout_toLeftOf="@id/entrar_button"
                 android:layout_toStartOf="@id/entrar_button"
                 android:text="@string/login_button_cancel" />
 

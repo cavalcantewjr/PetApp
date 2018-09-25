@@ -55,6 +55,7 @@ public class CadastroActivity extends AppCompatActivity {
         cadastrarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // TODO: persistir novo usuário no firebase
                 PetAppApplication.usuario = new Usuario();
                 PetAppApplication.usuario.nome = usuarioEditText.getText().toString();
                 PetAppApplication.usuario.email = emailEditText.getText().toString();
