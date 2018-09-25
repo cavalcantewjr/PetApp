@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.support.v7.app.AppCompatDelegate;
 
-import br.com.ipet.database.entities.Usuario;
+import br.com.ipet.model.entities.Usuario;
 
 public class PetAppApplication extends Application {
     private static PetAppApplication instance;

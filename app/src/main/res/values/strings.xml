@@ -12,6 +12,7 @@
 
     <string name="cadastro_title">Novo perfil</string>
     <string name="cadastro_hint_email">E-mail</string>
+    <string name="cadastro_hint_confirmar_senha">Confirmar senha</string>
     <string name="cadastro_button_cadastrar">Criar perfil</string>
     <string name="cadastro_button_voltar">Voltar</string>
 

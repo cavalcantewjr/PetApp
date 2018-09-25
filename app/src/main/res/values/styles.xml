@@ -11,7 +11,6 @@
 
     <style name="Widget.PetApp.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="hintTextAppearance">@style/TextAppearance.PetApp.TextInputLayout.HintText</item>
-        <item name="android:paddingBottom">8dp</item>
     </style>
 
     <style name="Widget.PetApp.Button" parent="Widget.MaterialComponents.Button">
