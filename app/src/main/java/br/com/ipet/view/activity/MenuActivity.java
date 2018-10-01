@@ -26,6 +26,7 @@ import br.com.ipet.infrastructure.image.picasso.transform.CircleTransform;
 import br.com.ipet.view.fragment.TabFragment;
 import br.com.ipet.view.fragment.drawer.ConfiguracoesFragment;
 import br.com.ipet.view.fragment.drawer.ContatoFragment;
+import br.com.ipet.view.fragment.drawer.MeusPedidosFragment;
 import br.com.ipet.view.fragment.drawer.PerfilFragment;
 import br.com.ipet.view.fragment.drawer.QuemSomosFragment;
 import butterknife.BindView;
@@ -99,6 +100,10 @@ public class MenuActivity extends AppCompatActivity {
         switch (menuItem.getItemId()) {
             case R.id.nav_item_home: {
                 fragment = new TabFragment();
+                break;
+            }
+            case R.id.nav_item_meus_pedidos: {
+                fragment = new MeusPedidosFragment();
                 break;
             }
             case R.id.nav_item_perfil: {

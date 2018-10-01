@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
 
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         // TODO: usar login do firebase
-        if (firebaseUser != null || PetAppApplication.usuario != null) {
+        if (firebaseUser != null || PetAppApplication.usuarioLogado != null) {
             navegarParaMenu();
         }
 
@@ -103,9 +103,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // TODO: usar login do firebase
-                PetAppApplication.usuario = new Usuario();
-                PetAppApplication.usuario.nome = usuarioEditText.getText().toString();
-                PetAppApplication.usuario.senha = passwordEditText.getText().toString();
+                PetAppApplication.usuarioLogado = new Usuario();
+                PetAppApplication.usuarioLogado.nome = usuarioEditText.getText().toString();
+                PetAppApplication.usuarioLogado.senha = passwordEditText.getText().toString();
 
                 navegarParaMenu();
             }

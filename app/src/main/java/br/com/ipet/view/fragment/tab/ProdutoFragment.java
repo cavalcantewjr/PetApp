@@ -2,18 +2,23 @@ package br.com.ipet.view.fragment.tab;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.ipet.R;
+import br.com.ipet.infrastructure.animation.AnimationUtil;
 import br.com.ipet.infrastructure.network.retrofit.RetrofitClientInstance;
 import br.com.ipet.infrastructure.network.retrofit.service.InfnetService;
 import br.com.ipet.model.entities.InfnetTarefa;
@@ -26,12 +31,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProdutoFragment extends Fragment {
+public class ProdutoFragment extends Fragment implements ProdutoView {
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
+    @BindView(R.id.progress_bar)
+    ProgressBar progressBar;
+    @BindView(R.id.produto_scroll_view)
+    NestedScrollView scrollView;
 
-    ProdutoRepository produtoRepository = new ProdutoRepository();
+    RelativeLayout footerCarrinho;
+    TextView buttonVerCarrinho;
+    ProdutoRepository produtoRepository = new ProdutoRepository(this);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,18 +55,48 @@ public class ProdutoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_produto, container, false);
         ButterKnife.bind(this, view);
 
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        produtoRepository.getAll();
 
-        List<Produto> produtoList = new ArrayList<>();
-        ProdutoListAdapter adapter = new ProdutoListAdapter(produtoList);
-        recyclerView.setAdapter(adapter);
-
-        produtoRepository.getAll(getResources(), adapter, produtoList);
-
-        consumirApiInfnet();
+//        consumirApiInfnet();
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        footerCarrinho = getActivity().findViewById(R.id.footer_carrinho);
+        scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                if (scrollY > oldScrollY) {
+                    AnimationUtil.slideDown(footerCarrinho);
+                }
+                if (scrollY < oldScrollY) {
+                    AnimationUtil.slideUp(footerCarrinho);
+                }
+            }
+        });
+
+        buttonVerCarrinho = getActivity().findViewById(R.id.carrinho_ver_carrinho);
+        buttonVerCarrinho.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "Exibir carrinho", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    public void onLoadProdutos(List<Produto> produtoList) {
+        ProdutoListAdapter adapter = new ProdutoListAdapter(produtoList);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(adapter);
+
+        progressBar.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.VISIBLE);
     }
 
     private void consumirApiInfnet() {
@@ -74,4 +115,5 @@ public class ProdutoFragment extends Fragment {
             }
         });
     }
+
 }

@@ -43,7 +43,7 @@ public class CadastroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
         ButterKnife.bind(this);
 
-        if(PetAppApplication.usuario != null){
+        if(PetAppApplication.usuarioLogado != null){
             navegarParaMenu();
         }
 
@@ -57,10 +57,10 @@ public class CadastroActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // TODO: persistir novo usuário no firebase
-                PetAppApplication.usuario = new Usuario();
-                PetAppApplication.usuario.nome = usuarioEditText.getText().toString();
-                PetAppApplication.usuario.email = emailEditText.getText().toString();
-                PetAppApplication.usuario.senha = passwordEditText.getText().toString();
+                PetAppApplication.usuarioLogado = new Usuario();
+                PetAppApplication.usuarioLogado.nome = usuarioEditText.getText().toString();
+                PetAppApplication.usuarioLogado.email = emailEditText.getText().toString();
+                PetAppApplication.usuarioLogado.senha = passwordEditText.getText().toString();
 
                 navegarParaMenu();
             }
