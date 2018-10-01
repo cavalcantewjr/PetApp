@@ -3,6 +3,7 @@ package br.com.ipet.view.fragment.tab;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -36,6 +36,7 @@ public class ServicoFragment extends Fragment implements ServicoView {
 
     RelativeLayout footerCarrinho;
     TextView buttonVerCarrinho;
+    BottomSheetDialog bottomSheetDialog;
     ServicoRepository servicoRepository = new ServicoRepository(this);
 
     @Override
@@ -49,7 +50,6 @@ public class ServicoFragment extends Fragment implements ServicoView {
         View view = inflater.inflate(R.layout.fragment_servico, container, false);
         ButterKnife.bind(this, view);
 
-        servicoRepository.getAll();
         return view;
     }
 
@@ -57,13 +57,14 @@ public class ServicoFragment extends Fragment implements ServicoView {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        servicoRepository.getAll();
+
         footerCarrinho = getActivity().findViewById(R.id.footer_carrinho);
         scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 if (scrollY > oldScrollY) {
                     AnimationUtil.slideDown(footerCarrinho);
-
                 }
                 if (scrollY < oldScrollY) {
                     AnimationUtil.slideUp(footerCarrinho);
@@ -71,11 +72,15 @@ public class ServicoFragment extends Fragment implements ServicoView {
             }
         });
 
+        bottomSheetDialog = new BottomSheetDialog(getActivity());
+        View sheetView = getActivity().getLayoutInflater().inflate(R.layout.fragment_carrinho, null);
+        bottomSheetDialog.setContentView(sheetView);
+
         buttonVerCarrinho = getActivity().findViewById(R.id.carrinho_ver_carrinho);
         buttonVerCarrinho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Exibir carrinho", Toast.LENGTH_SHORT).show();
+                bottomSheetDialog.show();
             }
         });
     }

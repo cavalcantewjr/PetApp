@@ -3,6 +3,7 @@ package br.com.ipet.view.fragment.tab;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -42,6 +43,7 @@ public class ProdutoFragment extends Fragment implements ProdutoView {
 
     RelativeLayout footerCarrinho;
     TextView buttonVerCarrinho;
+    BottomSheetDialog bottomSheetDialog;
     ProdutoRepository produtoRepository = new ProdutoRepository(this);
 
     @Override
@@ -55,16 +57,14 @@ public class ProdutoFragment extends Fragment implements ProdutoView {
         View view = inflater.inflate(R.layout.fragment_produto, container, false);
         ButterKnife.bind(this, view);
 
-        produtoRepository.getAll();
-
-//        consumirApiInfnet();
-
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        produtoRepository.getAll();
 
         footerCarrinho = getActivity().findViewById(R.id.footer_carrinho);
         scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
@@ -79,13 +79,19 @@ public class ProdutoFragment extends Fragment implements ProdutoView {
             }
         });
 
+        bottomSheetDialog = new BottomSheetDialog(getActivity());
+        View sheetView = getActivity().getLayoutInflater().inflate(R.layout.fragment_carrinho, null);
+        bottomSheetDialog.setContentView(sheetView);
+
         buttonVerCarrinho = getActivity().findViewById(R.id.carrinho_ver_carrinho);
         buttonVerCarrinho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Exibir carrinho", Toast.LENGTH_SHORT).show();
+                bottomSheetDialog.show();
             }
         });
+
+//        consumirApiInfnet();
     }
 
     @Override
