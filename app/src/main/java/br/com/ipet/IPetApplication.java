@@ -4,16 +4,17 @@ import android.app.Application;
 import android.content.Context;
 import android.support.v7.app.AppCompatDelegate;
 
+import com.google.firebase.auth.FirebaseUser;
+
 import br.com.ipet.model.entities.Carrinho;
-import br.com.ipet.model.entities.Usuario;
 
-public class PetAppApplication extends Application {
-    private static PetAppApplication instance;
+public class IPetApplication extends Application {
+    private static IPetApplication instance;
     private static Context context;
-    public static Usuario usuarioLogado;
-    public static Carrinho carrinho;
+    public static FirebaseUser usuarioLogado;
+    public static Carrinho carrinho = new Carrinho();
 
-    public static PetAppApplication getInstance() {
+    public static IPetApplication getInstance() {
         return instance;
     }
 

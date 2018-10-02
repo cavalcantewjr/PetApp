@@ -21,9 +21,9 @@ import butterknife.ButterKnife;
 
 public class MeusPedidosFragment extends Fragment implements MeusPedidosView {
 
-    @BindView(R.id.recycler_view)
+    @BindView(R.id.meus_pedidos_recycler_view)
     RecyclerView recyclerView;
-    @BindView(R.id.progress_bar)
+    @BindView(R.id.meus_pedidos_progress_bar)
     ProgressBar progressBar;
 
     PedidoRepository pedidoRepository = new PedidoRepository(this);

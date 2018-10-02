@@ -25,9 +25,8 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import br.com.ipet.PetAppApplication;
+import br.com.ipet.IPetApplication;
 import br.com.ipet.R;
-import br.com.ipet.model.entities.Usuario;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import timber.log.Timber;
@@ -67,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
 
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         // TODO: usar login do firebase
-        if (firebaseUser != null || PetAppApplication.usuarioLogado != null) {
+        if (firebaseUser != null || IPetApplication.usuarioLogado != null) {
             navegarParaMenu();
         }
 
@@ -103,9 +102,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // TODO: usar login do firebase
-                PetAppApplication.usuarioLogado = new Usuario();
-                PetAppApplication.usuarioLogado.nome = usuarioEditText.getText().toString();
-                PetAppApplication.usuarioLogado.senha = passwordEditText.getText().toString();
+//                IPetApplication.usuarioLogado = new Usuario();
+//                IPetApplication.usuarioLogado.nome = usuarioEditText.getText().toString();
+//                IPetApplication.usuarioLogado.senha = passwordEditText.getText().toString();
 
                 navegarParaMenu();
             }
@@ -141,7 +140,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Timber.d("signInWithCredential:success");
-                            FirebaseUser user = firebaseAuth.getCurrentUser();
+                            IPetApplication.usuarioLogado = firebaseAuth.getCurrentUser();
                             navegarParaMenu();
                         } else {
                             Timber.w(task.getException(), "signInWithCredential:failure");

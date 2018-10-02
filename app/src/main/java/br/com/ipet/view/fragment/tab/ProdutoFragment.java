@@ -3,7 +3,6 @@ package br.com.ipet.view.fragment.tab;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,19 +11,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
 
+import br.com.ipet.IPetApplication;
 import br.com.ipet.R;
-import br.com.ipet.infrastructure.animation.AnimationUtil;
 import br.com.ipet.infrastructure.network.retrofit.RetrofitClientInstance;
 import br.com.ipet.infrastructure.network.retrofit.service.InfnetService;
 import br.com.ipet.model.entities.InfnetTarefa;
 import br.com.ipet.model.entities.Produto;
 import br.com.ipet.model.repository.ProdutoRepository;
+import br.com.ipet.view.activity.MenuActivity;
 import br.com.ipet.view.adapter.ProdutoListAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,22 +32,22 @@ import retrofit2.Response;
 
 public class ProdutoFragment extends Fragment implements ProdutoView {
 
-    @BindView(R.id.recycler_view)
+    @BindView(R.id.produto_recycler_view)
     RecyclerView recyclerView;
-    @BindView(R.id.progress_bar)
+    @BindView(R.id.produto_progress_bar)
     ProgressBar progressBar;
     @BindView(R.id.produto_scroll_view)
     NestedScrollView scrollView;
 
-    RelativeLayout footerCarrinho;
-    TextView buttonVerCarrinho;
-    BottomSheetDialog bottomSheetDialog;
+    MenuActivity menuActivity;
     ProdutoRepository produtoRepository = new ProdutoRepository(this);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+
+        menuActivity = ((MenuActivity) getActivity());
     }
 
     @Override
@@ -66,28 +64,15 @@ public class ProdutoFragment extends Fragment implements ProdutoView {
 
         produtoRepository.getAll();
 
-        footerCarrinho = getActivity().findViewById(R.id.footer_carrinho);
         scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                if (scrollY > oldScrollY) {
-                    AnimationUtil.slideDown(footerCarrinho);
+                if (scrollY > oldScrollY && !IPetApplication.carrinho.pedido.isEmpty()) {
+                    menuActivity.hideTabFragmentFooter();
                 }
-                if (scrollY < oldScrollY) {
-                    AnimationUtil.slideUp(footerCarrinho);
+                if (scrollY < oldScrollY && !IPetApplication.carrinho.pedido.isEmpty()) {
+                    menuActivity.showTabFragmentFooter();
                 }
-            }
-        });
-
-        bottomSheetDialog = new BottomSheetDialog(getActivity());
-        View sheetView = getActivity().getLayoutInflater().inflate(R.layout.fragment_carrinho, null);
-        bottomSheetDialog.setContentView(sheetView);
-
-        buttonVerCarrinho = getActivity().findViewById(R.id.carrinho_ver_carrinho);
-        buttonVerCarrinho.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bottomSheetDialog.show();
             }
         });
 
@@ -121,5 +106,4 @@ public class ProdutoFragment extends Fragment implements ProdutoView {
             }
         });
     }
-
 }

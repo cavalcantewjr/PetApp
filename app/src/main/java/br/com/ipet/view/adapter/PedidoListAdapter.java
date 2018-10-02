@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import br.com.ipet.R;
@@ -15,6 +17,8 @@ import br.com.ipet.model.entities.Pedido;
 public class PedidoListAdapter extends RecyclerView.Adapter<PedidoListAdapter.PedidoListHolder> {
 
     private List<Pedido> pedidoList;
+    NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy HH:mm");
 
     public PedidoListAdapter(List<Pedido> pedidoList) {
         this.pedidoList = pedidoList;
@@ -32,10 +36,12 @@ public class PedidoListAdapter extends RecyclerView.Adapter<PedidoListAdapter.Pe
     public void onBindViewHolder(@NonNull PedidoListHolder holder, int position) {
         if (pedidoList != null && position < pedidoList.size()) {
             Pedido pedido = pedidoList.get(position);
-            holder.pedidoProdutoQuantidade.setText("" + pedido.quantidadeProduto());
-            holder.pedidoProdutoValor.setText("R$ " + pedido.valorTotalProduto());
-            holder.pedidoServicoQuantidade.setText("" + pedido.quantidadeServico());
-            holder.pedidoServicoValor.setText("R$ " + pedido.valorTotalServico());
+
+            holder.pedidoData.setText(dateFormat.format(pedido.data.toDate()));
+            holder.pedidoProdutoQuantidade.setText("Produto: " + pedido.quantidadeProduto);
+            holder.pedidoProdutoValor.setText("Total: " + numberFormat.format(pedido.valorTotalProduto));
+            holder.pedidoServicoQuantidade.setText("Serviço: " + pedido.quantidadeServico);
+            holder.pedidoServicoValor.setText("Total: " + numberFormat.format(pedido.valorTotalServico));
         }
     }
 
@@ -46,6 +52,7 @@ public class PedidoListAdapter extends RecyclerView.Adapter<PedidoListAdapter.Pe
 
     class PedidoListHolder extends RecyclerView.ViewHolder {
 
+        TextView pedidoData;
         TextView pedidoProdutoQuantidade;
         TextView pedidoProdutoValor;
         TextView pedidoServicoQuantidade;
@@ -53,6 +60,7 @@ public class PedidoListAdapter extends RecyclerView.Adapter<PedidoListAdapter.Pe
 
         PedidoListHolder(@NonNull View itemView) {
             super(itemView);
+            pedidoData = itemView.findViewById(R.id.pedido_data);
             pedidoProdutoQuantidade = itemView.findViewById(R.id.pedido_produto_quantidade);
             pedidoProdutoValor = itemView.findViewById(R.id.pedido_produto_valor);
             pedidoServicoQuantidade = itemView.findViewById(R.id.pedido_servico_quantidade);

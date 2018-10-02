@@ -1,18 +1,19 @@
 package br.com.ipet.model.entities;
 
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.Timestamp;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Pedido {
     public String id;
-    public DocumentReference usuarioRef;
-    public CollectionReference produtoListRef;
-    public CollectionReference serviceListRef;
+    public String usuarioId;
+    public Timestamp data;
+    public int quantidadeProduto;
+    public int quantidadeServico;
+    public float valorTotalProduto;
+    public float valorTotalServico;
 
-    public Usuario usuario;
     public List<Produto> produtoList = new ArrayList<>();
     public List<Servico> servicoList = new ArrayList<>();
 
@@ -56,5 +57,9 @@ public class Pedido {
 
     public void removerServico(Servico servico) {
         servicoList.remove(servico);
+    }
+
+    public boolean isEmpty() {
+        return (quantidadeProduto() + quantidadeServico()) == 0;
     }
 }

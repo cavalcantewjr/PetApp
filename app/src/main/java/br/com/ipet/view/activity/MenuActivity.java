@@ -51,7 +51,7 @@ public class MenuActivity extends AppCompatActivity {
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.containerView, new TabFragment())
+                .replace(R.id.fragmentContainer, new TabFragment())
                 .commit();
 
         navigationView.setCheckedItem(R.id.nav_item_home);
@@ -63,7 +63,7 @@ public class MenuActivity extends AppCompatActivity {
                 if (menuItem.getItemId() != R.id.nav_item_avaliar) {
                     getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.containerView, selectedFragment)
+                            .replace(R.id.fragmentContainer, selectedFragment)
                             .commit();
 
                     if (menuItem.getItemId() != R.id.nav_item_avaliar) getSupportActionBar().setTitle(menuItem.getTitle());
@@ -139,5 +139,15 @@ public class MenuActivity extends AppCompatActivity {
         } catch (ActivityNotFoundException e) {
             Toast.makeText(this, " unable to find market app", Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void hideTabFragmentFooter(){
+        TabFragment fragment = (TabFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
+        fragment.hideFooter();
+    }
+
+    public void showTabFragmentFooter(){
+        TabFragment fragment = (TabFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
+        fragment.showFooter();
     }
 }

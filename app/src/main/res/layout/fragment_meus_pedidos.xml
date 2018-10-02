@@ -8,20 +8,20 @@
     tools:context=".view.fragment.drawer.MeusPedidosFragment">
 
     <ProgressBar
-        android:id="@+id/progress_bar"
+        android:id="@+id/meus_pedidos_progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
 
     <android.support.v4.widget.NestedScrollView
-        android:id="@+id/produto_scroll_view"
+        android:id="@+id/meus_pedidos_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="6dp"
         app:contentInsetStart="0dp">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
+            android:id="@+id/meus_pedidos_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone" />

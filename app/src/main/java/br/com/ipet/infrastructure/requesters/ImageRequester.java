@@ -10,15 +10,15 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.Volley;
 
-import br.com.ipet.PetAppApplication;
+import br.com.ipet.IPetApplication;
 
-public class ImgRequester {
-    private static ImgRequester instance = null;
+public class ImageRequester {
+    private static ImageRequester instance = null;
     private final Context context;
     private final ImageLoader imageLoader;
 
-    private ImgRequester() {
-        context = PetAppApplication.getContext();
+    private ImageRequester() {
+        context = IPetApplication.getContext();
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.start();
         final int byteSizeMax = calculateMaxByteSize();
@@ -46,9 +46,9 @@ public class ImgRequester {
                         });
     }
 
-    public static ImgRequester getInstance() {
+    public static ImageRequester getInstance() {
         if (instance == null) {
-            instance = new ImgRequester();
+            instance = new ImageRequester();
         }
         return instance;
     }

@@ -9,9 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 
-import br.com.ipet.PetAppApplication;
+import br.com.ipet.IPetApplication;
 import br.com.ipet.R;
-import br.com.ipet.model.entities.Usuario;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -43,7 +42,7 @@ public class CadastroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
         ButterKnife.bind(this);
 
-        if(PetAppApplication.usuarioLogado != null){
+        if(IPetApplication.usuarioLogado != null){
             navegarParaMenu();
         }
 
@@ -57,10 +56,10 @@ public class CadastroActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // TODO: persistir novo usuário no firebase
-                PetAppApplication.usuarioLogado = new Usuario();
-                PetAppApplication.usuarioLogado.nome = usuarioEditText.getText().toString();
-                PetAppApplication.usuarioLogado.email = emailEditText.getText().toString();
-                PetAppApplication.usuarioLogado.senha = passwordEditText.getText().toString();
+//                IPetApplication.usuarioLogado = new Usuario();
+//                IPetApplication.usuarioLogado.nome = usuarioEditText.getText().toString();
+//                IPetApplication.usuarioLogado.email = emailEditText.getText().toString();
+//                IPetApplication.usuarioLogado.senha = passwordEditText.getText().toString();
 
                 navegarParaMenu();
             }

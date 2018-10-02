@@ -7,30 +7,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.NetworkImageView;
-
 import java.text.NumberFormat;
 import java.util.List;
 
 import br.com.ipet.R;
-import br.com.ipet.infrastructure.requesters.ImageRequester;
 import br.com.ipet.model.entities.Produto;
 
-public class ProdutoListAdapter extends RecyclerView.Adapter<ProdutoListAdapter.ProdutoListHolder> {
+public class CarrinhoProdutoListAdapter extends RecyclerView.Adapter<CarrinhoProdutoListAdapter.ProdutoListHolder> {
 
     private List<Produto> produtoList;
     NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
-    private ImageRequester imageRequester;
 
-    public ProdutoListAdapter(List<Produto> produtoList) {
+    public CarrinhoProdutoListAdapter(List<Produto> produtoList) {
         this.produtoList = produtoList;
-        imageRequester = ImageRequester.getInstance();
     }
 
     @NonNull
     @Override
     public ProdutoListHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        int layoutId = R.layout.card_produto;
+        int layoutId = R.layout.card_carrinho_produto;
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
         return new ProdutoListHolder(layoutView);
     }
@@ -39,9 +34,9 @@ public class ProdutoListAdapter extends RecyclerView.Adapter<ProdutoListAdapter.
     public void onBindViewHolder(@NonNull ProdutoListHolder holder, int position) {
         if (produtoList != null && position < produtoList.size()) {
             Produto produto = produtoList.get(position);
-            holder.produtoTitulo.setText(produto.titulo);
+            // TODO: Agrupar por produto e colocar a quantidade correta
+            holder.produtoTitulo.setText("1 - " + produto.titulo);
             holder.produtoPreco.setText(numberFormat.format(produto.preco));
-            imageRequester.setImageFromUrl(holder.produtoImagem, produto.url);
         }
     }
 
@@ -52,15 +47,13 @@ public class ProdutoListAdapter extends RecyclerView.Adapter<ProdutoListAdapter.
 
     class ProdutoListHolder extends RecyclerView.ViewHolder {
 
-        NetworkImageView produtoImagem;
         TextView produtoTitulo;
         TextView produtoPreco;
 
         ProdutoListHolder(@NonNull View itemView) {
             super(itemView);
-            produtoImagem = itemView.findViewById(R.id.produto_imagem);
-            produtoTitulo = itemView.findViewById(R.id.produto_titulo);
-            produtoPreco = itemView.findViewById(R.id.produto_preco);
+            produtoTitulo = itemView.findViewById(R.id.carrinho_produto_titulo);
+            produtoPreco = itemView.findViewById(R.id.carrinho_produto_preco);
         }
     }
 }

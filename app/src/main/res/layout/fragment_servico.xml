@@ -8,7 +8,7 @@
     tools:context=".view.fragment.tab.ServicoFragment">
 
     <ProgressBar
-        android:id="@+id/progress_bar"
+        android:id="@+id/servico_progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
@@ -21,7 +21,7 @@
         app:contentInsetStart="0dp">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
+            android:id="@+id/servico_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone" />
